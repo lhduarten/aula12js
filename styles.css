@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-x: hidden; /* Evitar rolagem horizontal ao aumentar o zoom */
+}
+
+.kanban-board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 90%;
+    margin: auto;
+    padding: 1rem; /* Ajustar padding para maior responsividade */
+    box-sizing: border-box; /* Incluir padding e border na largura total */
+}
+
+.kanban-column {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    min-width: 250px;
+    margin: 10px;
+    padding: 1rem;
+    box-sizing: border-box;
+    resize: both; /* Permitir redimensionamento horizontal e vertical */
+    overflow: auto; /* Garantir que o conteúdo não transborde */
+}
+
+.kanban-column h2 {
+    text-align: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin: 0 0 10px 0;
+    font-size: 1.5em; /* Ajustar tamanho da fonte para h2 */
+}
+
+.kanban-tasks {
+    min-height: 200px;
+    margin-top: 10px;
+}
+
+.task {
+    background-color: #e0e0e0;
+    border-radius: 3px;
+    margin: 5px;
+    padding: 10px;
+    cursor: grab;
+    border: 2px solid transparent; /* Cor de borda padrão */
+    transition: border-color 0.3s;
+}
+
+.task h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2em; /* Ajustar tamanho da fonte para h3 */
+}
+
+.task p {
+    margin: 0;
+}
+
+.task.dragging {
+    opacity: 0.5;
+}
+
+.task.due-soon {
+    border-color: red; /* Cor de borda para tarefas com prazo próximo */
+}
+
+.task:focus {
+    outline: 3px solid #007BFF; /* Contorno de foco para acessibilidade */
+}
+
+.kanban-tasks.over {
+    border: 2px dashed #000;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 1024px) {
+    .kanban-column {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .kanban-column {
+        width: 100%;
+        margin: 5px 0; /* Reduzir margem para telas menores */
+    }
+}
+
+@media (orientation: landscape) and (max-width: 480px) {
+    body {
+        flex-direction: column; /* Ajustar direção flex para modo paisagem em telas pequenas */
+        align-items: flex-start;
+        padding: 10px;
+    }
+    .kanban-board {
+        width: 100%;
+    }
+    .kanban-column {
+        width: 90%;
+        margin: 5px auto; /* Centralizar colunas no modo paisagem */
+    }
+}
+
+@media (orientation: portrait) and (max-width: 480px) {
+    .kanban-column {
+        width: 90%;
+    }
+}
